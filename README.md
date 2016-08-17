@@ -4,17 +4,24 @@ A Firebase storage module for Botkit.
 
 ## Usage
 
-Just require `botkit-storage-firebase` and pass it a config with a `firebase_uri` option.
+Just require `botkit-storage-firebase` and pass it a config object as shown below. See the [set up guide on Firebase](https://firebase.google.com/docs/web/setup) for more information.
 Then pass the returned storage when creating your Botkit controller. Botkit will do the rest.
+
 
 Make sure everything you store has an `id` property, that's what you'll use to look it up later.
 
 ```
 var Botkit = require('botkit'),
-    firebaseStorage = require('botkit-storage-firebase')({firebase_uri: '...'}),
+    firebaseStorage = require('botkit-storage-firebase')({
+        apiKey: "<api_key>",
+        authDomain: "<project_id>.firebaseapp.com",
+        databaseURL: "https://<database_name>.firebaseio.com"",
+        storageBucket: "<BUCKET>.appspot.com"
+    }),
     controller = Botkit.slackbot({
         storage: firebaseStorage
     });
+
 ```
 
 ```
